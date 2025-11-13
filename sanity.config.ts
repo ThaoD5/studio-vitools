@@ -6,6 +6,8 @@ import {schemaTypes} from './schemaTypes'
 
 import {CogIcon, HomeIcon} from '@sanity/icons'
 
+import {shopifyAssets} from 'sanity-plugin-shopify-assets'
+
 export default defineConfig({
   name: 'default',
   title: 'vitools',
@@ -143,6 +145,10 @@ export default defineConfig({
     }),
     // structureTool(),
     // visionTool(),
+
+    shopifyAssets({
+      shopifyDomain: 'ingamana-test-2.myshopify.com',
+    }),
   ],
 
   schema: {
