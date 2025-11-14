@@ -42,6 +42,7 @@ import {sectionToolsComparison} from './sections/general/toolsComparison'
 import {sectionTransformations} from './sections/general/transformations'
 import {sectionTwoCta} from './sections/general/twoCta'
 import {button} from './components/button'
+import {shopifyProductId} from './components/shopifyProductId'
 
 export const schemaTypes = [
   // Globals
@@ -52,6 +53,7 @@ export const schemaTypes = [
   title,
   button,
   hero,
+  shopifyProductId,
 
   // Heros
   heroFullscreen,
