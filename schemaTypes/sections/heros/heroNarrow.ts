@@ -12,6 +12,21 @@ export const heroNarrow = defineType({
       type: 'title',
       validation: (rule) => rule.required(),
     },
+    {
+      name: 'theme',
+      title: 'Text Theme',
+      description: 'Light = white text, Dark = dark text',
+      defaultValue: 'light',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Light', value: 'light'},
+          {title: 'Dark', value: 'dark'},
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required(),
+    },
   ],
   preview: {
     select: {

@@ -10,17 +10,7 @@ export const homeTypes = defineType({
       name: 'hero',
       title: 'Hero',
       type: 'hero',
-      validation: (rule) => rule.required(),
       fieldset: 'hero',
-    },
-    {
-      name: 'assetattempt',
-      title: 'asset attempt',
-      type: 'shopify.asset',
-      options: {
-        shopifyDomain: 'ingamana-test-2.myshopify.com',
-      },
-      validation: (rule) => rule.required(),
     },
     {
       name: 'productattempt',

@@ -1,4 +1,5 @@
 import {defineType} from 'sanity'
+import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionTools = defineType({
   name: 'sectionTools',
@@ -11,6 +12,31 @@ export const sectionTools = defineType({
       type: 'title',
       validation: (rule) => rule.required(),
     },
+    {
+      name: 'text',
+      title: 'Text',
+      type: 'customText',
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: 'button',
+      title: 'Button',
+      type: 'button',
+    },
+    {
+      name: 'products',
+      title: 'Products',
+      type: 'array',
+      of: [
+        {
+          name: 'product',
+          title: 'Product',
+          type: 'shopify.product',
+          validation: (rule) => rule.required(),
+        },
+      ],
+      validation: (rule) => rule.required().min(1),
+    },
   ],
   preview: {
     select: {
@@ -18,7 +44,7 @@ export const sectionTools = defineType({
     },
     prepare({title}) {
       return {
-        title: title,
+        title: portableTextToPlainText(title),
         subtitle: 'Section — Tools',
       }
     },

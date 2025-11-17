@@ -1,4 +1,5 @@
 import {defineType} from 'sanity'
+import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionTransformations = defineType({
   name: 'sectionTransformations',
@@ -6,10 +7,64 @@ export const sectionTransformations = defineType({
   type: 'object',
   fields: [
     {
+      name: 'backgroundColor',
+      type: 'sectionBackgroundColor',
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'title',
       validation: (rule) => rule.required(),
+    },
+    {
+      name: 'cards',
+      title: 'Cards',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'media',
+              title: 'Media',
+              type: 'shopify.asset',
+              description: 'Expected aspect-ratio: 1:1',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'title',
+              title: 'Title',
+              type: 'title',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'description',
+              title: 'Description',
+              type: 'customText',
+            },
+            {
+              name: 'button',
+              title: 'Button',
+              type: 'button',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              description: 'description',
+              image: 'media',
+            },
+            prepare({title, description, image}) {
+              return {
+                title: portableTextToPlainText(title),
+                subtitle: portableTextToPlainText(description),
+                // media: image?.url || undefined, // TODO: this doesnt work
+              }
+            },
+          },
+        },
+      ],
+      validation: (rule) => rule.required().min(1),
     },
   ],
   preview: {
@@ -18,7 +73,7 @@ export const sectionTransformations = defineType({
     },
     prepare({title}) {
       return {
-        title: title,
+        title: portableTextToPlainText(title),
         subtitle: 'Section — Transformations',
       }
     },

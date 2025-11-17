@@ -1,4 +1,5 @@
 import {defineType} from 'sanity'
+import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionToolsComparison = defineType({
   name: 'sectionToolsComparison',
@@ -11,6 +12,91 @@ export const sectionToolsComparison = defineType({
       type: 'title',
       validation: (rule) => rule.required(),
     },
+    {
+      name: 'products',
+      title: 'Products',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'product',
+              title: 'Product',
+              type: 'shopify.product',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'icon',
+              title: 'Product Icon',
+              type: 'productIcon',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'media',
+              title: 'Media',
+              type: 'shopify.asset',
+              description: 'If a specific asset is desired, default to product feature media',
+            },
+            {
+              name: 'list',
+              title: 'List',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'listElement',
+                      title: 'List element',
+                      type: 'customText',
+                      validation: (rule) => rule.required(),
+                    },
+                  ],
+                  preview: {
+                    select: {
+                      title: 'listElement',
+                    },
+                    prepare({title}) {
+                      return {
+                        title: portableTextToPlainText(title) || 'No value',
+                      }
+                    },
+                  },
+                },
+              ],
+            },
+            {
+              name: 'text',
+              title: 'Text',
+              type: 'customText',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'quote',
+              title: 'Quote',
+              type: 'customText',
+            },
+            {
+              name: 'quoteAuthor',
+              title: 'Quote Author',
+              type: 'string',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'product',
+            },
+            prepare({title}) {
+              return {
+                title: title?.shopifyProductId || 'No product selected',
+              }
+            },
+          },
+        },
+      ],
+      validation: (rule) => rule.required().min(1),
+    },
   ],
   preview: {
     select: {
@@ -18,7 +104,7 @@ export const sectionToolsComparison = defineType({
     },
     prepare({title}) {
       return {
-        title: title,
+        title: portableTextToPlainText(title),
         subtitle: 'Section — Tools Comparison',
       }
     },

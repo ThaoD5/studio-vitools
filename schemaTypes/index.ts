@@ -43,6 +43,12 @@ import {sectionTransformations} from './sections/general/transformations'
 import {sectionTwoCta} from './sections/general/twoCta'
 import {button} from './components/button'
 import {shopifyProductId} from './components/shopifyProductId'
+import {sectionBackgroundColor} from './components/sectionBackgroundColor'
+import {customText} from './components/text'
+import {productIcon} from './components/productIcon'
+import {tag} from './components/tag'
+import {faqList} from './components/faqList'
+import {accordionList} from './components/accordionList'
 
 export const schemaTypes = [
   // Globals
@@ -51,9 +57,15 @@ export const schemaTypes = [
   // Components
   meta,
   title,
+  customText,
   button,
   hero,
   shopifyProductId,
+  sectionBackgroundColor,
+  productIcon,
+  tag,
+  faqList,
+  accordionList,
 
   // Heros
   heroFullscreen,

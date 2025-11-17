@@ -8,12 +8,12 @@ export const button = defineType({
   fields: [
     // Current button fields (keep intact)
     {
-      name: 'button_label',
+      name: 'label',
       title: 'Label',
       type: 'string',
     },
     {
-      name: 'button_url',
+      name: 'url',
       title: 'URL',
       type: 'string',
       description: 'Can be internal (/slug) or external (https://...)',
