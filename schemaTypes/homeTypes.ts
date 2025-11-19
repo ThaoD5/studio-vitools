@@ -13,15 +13,6 @@ export const homeTypes = defineType({
       fieldset: 'hero',
     },
     {
-      name: 'productattempt',
-      title: 'product attempt',
-      type: 'shopify.product',
-      options: {
-        shopifyDomain: 'ingamana-test-2.myshopify.com',
-      },
-      validation: (rule) => rule.required(),
-    },
-    {
       name: 'sections',
       title: 'Sections',
       type: 'sections',

@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import {defineType} from 'sanity'
 import {portableTextToPlainText} from '../../helpers/functions'
 
 export const accordionList = defineType({
@@ -11,7 +11,8 @@ export const accordionList = defineType({
       title: 'Accordions',
       type: 'array',
       of: [
-        {
+        defineType({
+          name: 'accordionItem',
           type: 'object',
           fields: [
             {
@@ -53,7 +54,7 @@ export const accordionList = defineType({
               }
             },
           },
-        },
+        }),
       ],
     },
   ],

@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import {defineType} from 'sanity'
 import {link} from './legacy/link'
 
 export const button = defineType({

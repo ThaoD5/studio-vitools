@@ -1,4 +1,4 @@
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionToolsComparison = defineType({
@@ -17,7 +17,8 @@ export const sectionToolsComparison = defineType({
       title: 'Products',
       type: 'array',
       of: [
-        {
+        defineType({
+          name: 'toolComparisonItem',
           type: 'object',
           fields: [
             {
@@ -43,15 +44,16 @@ export const sectionToolsComparison = defineType({
               title: 'List',
               type: 'array',
               of: [
-                {
+                defineType({
+                  name: 'toolComparisonListItem',
                   type: 'object',
                   fields: [
-                    {
+                    defineField({
                       name: 'listElement',
                       title: 'List element',
                       type: 'customText',
                       validation: (rule) => rule.required(),
-                    },
+                    }),
                   ],
                   preview: {
                     select: {
@@ -63,7 +65,7 @@ export const sectionToolsComparison = defineType({
                       }
                     },
                   },
-                },
+                }),
               ],
             },
             {
@@ -93,7 +95,7 @@ export const sectionToolsComparison = defineType({
               }
             },
           },
-        },
+        }),
       ],
       validation: (rule) => rule.required().min(1),
     },

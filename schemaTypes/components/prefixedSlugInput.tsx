@@ -4,8 +4,7 @@ import {Card, Stack, Text} from '@sanity/ui'
 import {SlugInput as DefaultSlugInput} from 'sanity'
 import {useClient} from 'sanity'
 import {useFormValue} from 'sanity'
-
-import {shopifySiteUrl} from '../../helpers/constants'
+import {siteUrl} from '../../helpers/constants'
 
 const CustomSlugInput = (props) => {
   const {schemaType, value, onChange, validation, elementProps} = props
@@ -16,29 +15,8 @@ const CustomSlugInput = (props) => {
   const client = useClient({apiVersion: '2023-05-03'}) // Adjust API version as needed
   const [suffix, setSuffix] = useState('')
 
-  // Get the target_audience reference ID from the form
-  const id = useFormValue(['store.id'])
-
-  // Fetch the target_audience document's slug.current
-  // useEffect(() => {
-  //   if (targetAudienceRef?._ref) {
-  //     client
-  //       .fetch(`*[_id == $ref][0]{slug{current}}`, {ref: targetAudienceRef._ref})
-  //       .then((result) => {
-  //         setSuffix(result?.slug?.current ? `/for-${result.slug.current}` : '')
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error fetching target audience slug:', error)
-  //         setSuffix('')
-  //       })
-  //   } else {
-  //     setSuffix('')
-  //   }
-  // }, [targetAudienceRef, client])
-
   // Construct the full URL
-  // const fullUrl = `${staging ? stage : site}${prefix}${value?.current || value || ''}${suffix}`
-  const fullUrl = `https://admin.shopify.com/store/${shopifySiteUrl}/products/${id}`
+  const fullUrl = `${siteUrl}${prefix}${value?.current || value || ''}${suffix}`
 
   return (
     <Stack space={3}>

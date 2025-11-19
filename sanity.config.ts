@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {deskTool} from 'sanity/desk'
 import {schemaTypes} from './schemaTypes'
+import {colorInput} from '@sanity/color-input'
 
 import {CogIcon, DocumentTextIcon, FolderIcon, HomeIcon, RocketIcon} from '@sanity/icons'
 
@@ -38,7 +39,7 @@ export default defineConfig({
               .id('home')
               .icon(HomeIcon)
               .child(S.document().schemaType('home').documentId('home')),
-            // S.documentTypeListItem('pages').title('Pages').icon(FolderIcon)NFolderIcon
+            S.documentTypeListItem('pages').title('Pages').icon(FolderIcon),
             // S.documentTypeListItem('products').title('Products').icon(DiamondIcon),
             // Sprint 1
             // S.documentTypeListItem('platforms').title('Platforms').icon(SquareIcon),
@@ -141,10 +142,11 @@ export default defineConfig({
           ]),
     }),
     // structureTool(),
-    visionTool(),
+    // visionTool(),
+    colorInput(),
 
     shopifyAssets({
-      shopifyDomain: shopifySiteUrl,
+      shopifyDomain: 'ingamana-test-2.myshopify.com',
     }),
   ],
 

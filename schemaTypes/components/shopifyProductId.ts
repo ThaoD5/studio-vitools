@@ -14,14 +14,11 @@ export const shopifyProductId = defineType({
   ],
   preview: {
     select: {
-      gid: 'shopify.product',
+      product: 'shopifyProductId',
     },
-    prepare({gid}) {
-      const id = gid?.startsWith('gid://shopify/Product/')
-        ? gid.slice('gid://shopify/Product/'.length)
-        : gid
+    prepare({product}) {
       return {
-        title: `Product ID: ${id || '(none)'}`,
+        title: `Product ID: ${product}`,
       }
     },
   },

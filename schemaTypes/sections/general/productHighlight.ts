@@ -17,7 +17,8 @@ export const sectionProductHighlight = defineType({
       title: 'Products',
       type: 'array',
       of: [
-        {
+        defineType({
+          name: 'productItem',
           type: 'object',
           fields: [
             {
@@ -55,7 +56,7 @@ export const sectionProductHighlight = defineType({
               }
             },
           },
-        },
+        }),
       ],
       validation: (rule) => rule.required().min(1),
     },

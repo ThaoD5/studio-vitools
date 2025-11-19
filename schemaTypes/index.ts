@@ -50,6 +50,8 @@ import {tag} from './components/tag'
 import {faqList} from './components/faqList'
 import {accordionList} from './components/accordionList'
 import {productsTypes} from './productsTypes'
+import {pagesTypes} from './pagesTypes'
+import {generalSections} from './sections/general'
 
 export const schemaTypes = [
   // Globals
@@ -71,6 +73,12 @@ export const schemaTypes = [
   // Heros
   heroFullscreen,
   heroNarrow,
+
+  // Sections List
+  sections,
+  generalSections,
+  shopSections,
+  articleToolkitSections,
 
   // Sections individual types
   sectionToolkitCTA,
@@ -102,12 +110,8 @@ export const schemaTypes = [
   sectionTransformations,
   sectionTwoCta,
 
-  // Sections List
-  sections,
-  shopSections,
-  articleToolkitSections,
-
   // Pages
   homeTypes,
+  pagesTypes,
   productsTypes,
 ]

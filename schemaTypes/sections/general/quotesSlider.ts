@@ -27,7 +27,8 @@ export const sectionQuotesSlider = defineType({
       title: 'Quotes',
       type: 'array',
       of: [
-        {
+        defineType({
+          name: 'quoteItem',
           type: 'object',
           fields: [
             {
@@ -67,7 +68,7 @@ export const sectionQuotesSlider = defineType({
               }
             },
           },
-        },
+        }),
       ],
       validation: (rule) => rule.required().min(1),
     },

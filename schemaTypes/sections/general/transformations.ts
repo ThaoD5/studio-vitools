@@ -21,7 +21,8 @@ export const sectionTransformations = defineType({
       title: 'Cards',
       type: 'array',
       of: [
-        {
+        defineType({
+          name: 'transformationCardItem',
           type: 'object',
           fields: [
             {
@@ -62,7 +63,7 @@ export const sectionTransformations = defineType({
               }
             },
           },
-        },
+        }),
       ],
       validation: (rule) => rule.required().min(1),
     },

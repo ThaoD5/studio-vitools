@@ -1,4 +1,5 @@
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
+import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionLargeTestimonials = defineType({
   name: 'sectionLargeTestimonials',
@@ -6,19 +7,79 @@ export const sectionLargeTestimonials = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
-      validation: (rule) => rule.required(),
+      name: 'quotes',
+      title: 'Quotes',
+      type: 'array',
+      of: [
+        defineType({
+          name: 'largeTestimonialItem',
+          type: 'object',
+          fields: [
+            {
+              name: 'backgroundColor',
+              title: 'Background Color',
+              type: 'color',
+              defaultValue: {hex: '#FFFFFF'},
+              options: {
+                disableAlpha: true,
+              },
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'quote',
+              title: 'Quote',
+              type: 'title',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'media',
+              title: 'Media',
+              type: 'shopify.asset',
+              description: 'Expected aspect-ratio: 1:1',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'quoteAuthor',
+              title: 'Quote Author',
+              type: 'customText',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'quoteAuthorSubtitle',
+              title: 'Quote Author Subtitle',
+              type: 'customText',
+            },
+            {
+              name: 'button',
+              title: 'Button',
+              type: 'button',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'quote',
+              subtitle: 'quoteAuthor',
+            },
+            prepare({title, subtitle}) {
+              return {
+                title: portableTextToPlainText(title),
+                subtitle: portableTextToPlainText(subtitle),
+              }
+            },
+          },
+        }),
+      ],
+
+      validation: (rule) => rule.required().min(2),
     },
   ],
   preview: {
     select: {
-      title: 'title',
+      quotes: 'quotes',
     },
-    prepare({title}) {
+    prepare({quotes}) {
       return {
-        title: title,
+        title: `Large Testimonials ${quotes ? `(${quotes.length})` : ''}`,
         subtitle: 'Section — Large Testimonials',
       }
     },

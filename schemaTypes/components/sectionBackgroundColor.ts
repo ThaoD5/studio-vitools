@@ -9,6 +9,7 @@ export const sectionBackgroundColor = defineType({
       name: 'backgroundColor',
       title: 'Section Background Color',
       type: 'string',
+      defaultValue: 'white',
       initialValue: 'white',
       options: {
         list: [
