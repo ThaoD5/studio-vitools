@@ -1,4 +1,5 @@
 import {defineType} from 'sanity'
+import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionText = defineType({
   name: 'sectionText',
@@ -6,19 +7,34 @@ export const sectionText = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
+      name: 'fontFamily',
+      title: 'Font family',
+      defaultValue: 'default',
+      initialValue: 'default',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Default', value: 'default'},
+          {title: 'Typewriter', value: 'typewriter'},
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: 'content',
+      title: 'Content',
+      type: 'wysiwygText',
       validation: (rule) => rule.required(),
     },
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'content',
     },
     prepare({title}) {
       return {
-        title: title,
+        title: portableTextToPlainText(title),
         subtitle: 'Section — Text',
       }
     },

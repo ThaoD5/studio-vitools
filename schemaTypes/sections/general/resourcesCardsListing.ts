@@ -14,7 +14,7 @@ export const sectionResourcesCardsListing = defineType({
       name: 'title',
       title: 'Title',
       type: 'title',
-      validation: (rule) => rule.required(),
+      // validation: (rule) => rule.required(),
     },
     {
       name: 'description',
@@ -27,7 +27,7 @@ export const sectionResourcesCardsListing = defineType({
       type: 'array',
       of: [
         defineType({
-          name: 'resourcesCardItem',
+          name: 'resourcescardItem',
           type: 'object',
           fields: [
             {
@@ -73,6 +73,11 @@ export const sectionResourcesCardsListing = defineType({
               name: 'modalDescription',
               title: 'Modal Description',
               type: 'customText',
+            },
+            {
+              name: 'icon',
+              title: 'Icon',
+              type: 'productIcon',
             },
             {
               name: 'duration',

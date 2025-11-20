@@ -1,4 +1,5 @@
 import {defineType} from 'sanity'
+import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionFramedMedia = defineType({
   name: 'sectionFramedMedia',
@@ -6,20 +7,26 @@ export const sectionFramedMedia = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
+      name: 'media',
+      title: 'Media',
+      type: 'shopify.asset',
       validation: (rule) => rule.required(),
+    },
+    {
+      name: 'caption',
+      title: 'Caption',
+      type: 'customText',
     },
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'caption',
+      media: 'media',
     },
-    prepare({title}) {
+    prepare({title, media}) {
       return {
-        title: title,
-        subtitle: 'Section — Framed Media',
+        title: title ? portableTextToPlainText(title) : media.url,
+        subtitle: 'Section — Simple Media',
       }
     },
   },

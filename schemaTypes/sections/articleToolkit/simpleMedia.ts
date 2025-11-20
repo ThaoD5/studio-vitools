@@ -1,4 +1,5 @@
 import {defineType} from 'sanity'
+import {portableTextToPlainText} from '../../../helpers/functions'
 
 export const sectionSimpleMedia = defineType({
   name: 'sectionSimpleMedia',
@@ -6,19 +7,19 @@ export const sectionSimpleMedia = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
+      name: 'media',
+      title: 'Media',
+      type: 'shopify.asset',
       validation: (rule) => rule.required(),
     },
   ],
   preview: {
     select: {
-      title: 'title',
+      media: 'media',
     },
-    prepare({title}) {
+    prepare({media}) {
       return {
-        title: title,
+        title: media.url,
         subtitle: 'Section — Simple Media',
       }
     },

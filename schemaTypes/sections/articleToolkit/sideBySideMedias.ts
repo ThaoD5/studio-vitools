@@ -6,19 +6,24 @@ export const sectionSideBySideMedias = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
+      name: 'media',
+      title: 'Media (left)',
+      type: 'shopify.asset',
+      description: 'Expected aspect-ratio: 1:1',
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: 'media2',
+      title: 'Media (right)',
+      type: 'shopify.asset',
+      description: 'Expected aspect-ratio: 1:1',
       validation: (rule) => rule.required(),
     },
   ],
   preview: {
-    select: {
-      title: 'title',
-    },
-    prepare({title}) {
+    prepare() {
       return {
-        title: title,
+        title: 'Side By Side Medias',
         subtitle: 'Section — Side By Side Medias',
       }
     },

@@ -18,6 +18,7 @@ export const tag = defineType({
       type: 'string',
       options: {
         list: [
+          {title: 'Black', value: 'black'},
           {title: 'Pink', value: 'pink'},
           {title: 'Blue', value: 'blue'},
           {title: 'Teal', value: 'teal'},

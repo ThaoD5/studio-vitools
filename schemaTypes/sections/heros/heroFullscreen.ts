@@ -17,7 +17,8 @@ export const heroFullscreen = defineType({
       title: 'Buttons',
       type: 'array',
       of: [
-        {
+        defineType({
+          name: 'heroFullscreenButtons',
           type: 'object',
           fields: [
             {
@@ -56,7 +57,7 @@ export const heroFullscreen = defineType({
               }
             },
           },
-        },
+        }),
       ],
       options: {
         sortable: true,

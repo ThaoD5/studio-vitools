@@ -6,19 +6,19 @@ export const sectionToolkitCTA = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
+      name: 'button',
+      title: 'Button',
+      type: 'button',
       validation: (rule) => rule.required(),
     },
   ],
   preview: {
     select: {
-      title: 'title',
+      button: 'button',
     },
-    prepare({title}) {
+    prepare({button}) {
       return {
-        title: title,
+        title: button?.label || 'Toolkit CTA',
         subtitle: 'Section — Toolkit CTA',
       }
     },

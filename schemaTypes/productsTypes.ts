@@ -121,6 +121,7 @@ export const productsTypes = defineType({
         },
       ],
     },
+
     // {
     //   name: 'store.slug',
     //   title: 'Test',

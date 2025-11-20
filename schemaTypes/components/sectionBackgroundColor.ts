@@ -14,7 +14,7 @@ export const sectionBackgroundColor = defineType({
       options: {
         list: [
           {title: 'White', value: 'white'},
-          {title: 'Purple', value: 'purple'},
+          {title: 'Pale Purple', value: 'purple'},
           {title: 'Yellow/Green', value: 'yellow-green'},
           {title: 'Green', value: 'green'},
           {title: 'Black', value: 'black'},

@@ -6,10 +6,16 @@ export const sectionMedia = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
+      name: 'media',
+      title: 'Media',
+      type: 'shopify.asset',
       validation: (rule) => rule.required(),
+    },
+    {
+      name: 'caption',
+      title: 'Caption',
+      type: 'customText',
+      // validation: (rule) => rule.required(),
     },
   ],
   preview: {

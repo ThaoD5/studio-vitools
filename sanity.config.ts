@@ -51,6 +51,14 @@ export default defineConfig({
               .title('Products')
               .icon(() => '🛍️'),
 
+            S.documentTypeListItem('articles')
+              .title('Articles')
+              .icon(() => '📚'),
+
+            S.documentTypeListItem('stories')
+              .title('Stories')
+              .icon(() => '📖'),
+
             // S.listItem()
             //   .title('Shopify Products')
             //   .icon(() => '🛍️') // optional emoji or import an icon

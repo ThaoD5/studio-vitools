@@ -52,6 +52,10 @@ import {accordionList} from './components/accordionList'
 import {productsTypes} from './productsTypes'
 import {pagesTypes} from './pagesTypes'
 import {generalSections} from './sections/general'
+import {articlesTypes} from './articlesTypes'
+import {wysiwygText} from './components/wysiwygText'
+import {storiesTypes} from './storiesTypes'
+import {wysiwygTextTabbedContent} from './components/wysiwygTextTabbedContent'
 
 export const schemaTypes = [
   // Globals
@@ -69,6 +73,8 @@ export const schemaTypes = [
   tag,
   faqList,
   accordionList,
+  wysiwygText,
+  wysiwygTextTabbedContent,
 
   // Heros
   heroFullscreen,
@@ -114,4 +120,6 @@ export const schemaTypes = [
   homeTypes,
   pagesTypes,
   productsTypes,
+  articlesTypes,
+  storiesTypes,
 ]

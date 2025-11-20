@@ -8,6 +8,8 @@ export const articleToolkitSectionsTypes = [
   {type: 'sectionSideBySideMedias'},
   {type: 'sectionSimpleMedia'},
   {type: 'sectionText'},
+  {type: 'sectionIntro'},
+  {type: 'sectionTwoCta'},
 ]
 
 export const articleToolkitSections = defineType({

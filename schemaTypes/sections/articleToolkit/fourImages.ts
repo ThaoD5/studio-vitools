@@ -6,19 +6,17 @@ export const sectionFourImages = defineType({
   type: 'object',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'title',
-      validation: (rule) => rule.required(),
+      name: 'medias',
+      title: 'Medias',
+      type: 'array',
+      of: [{type: 'shopify.asset'}],
+      validation: (rule) => rule.required().min(4).max(4),
     },
   ],
   preview: {
-    select: {
-      title: 'title',
-    },
-    prepare({title}) {
+    prepare() {
       return {
-        title: title,
+        title: 'Four Images',
         subtitle: 'Section — Four Images',
       }
     },
